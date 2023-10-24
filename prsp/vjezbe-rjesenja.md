@@ -63,7 +63,33 @@ search(0, n, subset)
 ## Zadatak 2: Binarna reprezentacija
 
 ```python
-bins = [format(i, "b").zfill(n) for i in range(2**n)]
+#Generiranje podskupova - binarna reprezentacija
+
+#n -> broj elemenata u listi
+#susbet -> podskupovi
+print("Unesite neki prirodan broj:" )
+n = int(input())
+subset = []
+
+#Petlja koja iterira kroz sve binarne brojeve sa n bitova
+for i in range(0, 2**n):
+    #Konverzija trenutnog integer-a 'i' u njegov binarni oblik:
+    #b -> varijabla koja sadrzi binarni broj
+    #Funckija 'format' pretvara i u binarni oblik
+    #Funkcija 'zfill' popunjava nule kako bi broj znamenki bio n
+    b = format(i, 'b').zfill(n)
+    print(b)
+
+    #lista za trenutne podskupove
+    res =[]
+
+    #Iteracija kroz svaki bit u binarnoj reprezentaciji
+    for j in range(n):
+        #Ako je j-ti element jednak 1, dodaj ga u res
+        if b[j] == "1":
+            res.append(j)
+
+    print(res)
 ```
 
 ### Zadatak 3: K-sum binarno
@@ -83,6 +109,9 @@ for sel in bins:
             if b=="1":
                 print(l[i])
 ```
+```python
+
+```
 
 ### Zadatak 4: K-sum Meet in the middle
 
@@ -92,6 +121,27 @@ for sel in bins:
 ### Zadatak 5: Različite znamenke
 
 ```python
+#Pronalazenje permutacija od ulaznog string-a
+
+from itertools import permutations
+
+#Ulazni string
+print("Unesite neku rijec (neka ne bude preduga):")
+s = input()
+
+#Generiranje permutacija
+#''.join(p) -> spaja sve znakove u permutaciji 'p' u jedan string
+#permutations(s) -> stvara permutacije ulaznog string-a 's'
+perms = [''.join(p) for p in permutations(s)]
+
+#Ispis broja permutacija
+print("Ukupan broj permutacija:")
+print(len(perms))
+
+#Ispis svih permutacija
+print("Permutacije:")
+for perm in perms:
+    print(perm)
 ```
 
 ## Pohlepni algoritmi
